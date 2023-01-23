@@ -28,21 +28,21 @@ class Brick(pygame.sprite.Sprite):
         self.health -=1
         if self.health <= 0:
             self.kill()
-
-    def get_bricks(width, height, level):
+    
+    def get_bricks(level):
         bricks = pygame.sprite.Group()
         load_level = None
         if level == 0:
-            load_level = GameController.level_1
+            load_level = GameController.LEVEL_1
         if level == 1:
-            load_level = GameController.level_2
+            load_level = GameController.LEVEL_2
         if level == 2:
-            load_level = GameController.level_3
-
-        for i in range(width):
-            for j in range(height):
-                if load_level[j][i] != 0:
-                    brick = Brick(32+i*96, 32+j*48, load_level[j][i])
+            load_level = GameController.LEVEL_3
+     
+        for i in range(0, len(load_level)):
+            for j in range(0, len(load_level[i])):
+                if load_level[i][j] != 0:
+                    brick = Brick(32+j*96, 32+i*48, load_level[i][j])
                     bricks.add(brick)
 
         return bricks 

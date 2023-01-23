@@ -15,7 +15,7 @@ font = pygame.font.SysFont('Comic Sans MS', 24)
 
 #Create a bricks objects
 bricks = pygame.sprite.Group()
-bricks = Brick.get_bricks(10, 7, GameController.level)
+bricks = Brick.get_bricks(GameController.level)
 
 #Create a platform object
 platform = Platform()
@@ -45,7 +45,7 @@ while game_work:
             break
         ball.reset_position()
         platform.reset_position()
-        bricks = Brick.get_bricks(10, 7, GameController.level)
+        bricks = Brick.get_bricks(GameController.level)
 
     #Update objects
     bricks.update()
@@ -77,6 +77,7 @@ while game_work:
     text_hp = font.render(f'HP: {GameController.hp}', False, (255, 255, 0))
     screen.blit(text_hp, (16, 16))
     
+    #Show Level
     text_level = font.render(f'Level: {GameController.level + 1}', False, (255, 255, 0))
     screen.blit(text_level, (920, 16))
 
